@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -25,7 +27,7 @@ class HermeneuticsPrompt(Prompt):
 
 
 load_dotenv()  # Load environment variables from .env file
-api_key = ""  # Add your OPEN AI API Key here
+api_key = os.getenv("OPENAI_API_KEY")  # Add your OPEN AI API Key here
 if not api_key:
     raise ValueError("OpenAI API key not found in environment variables")
 
